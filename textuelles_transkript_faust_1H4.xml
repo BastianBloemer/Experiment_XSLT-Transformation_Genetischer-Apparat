@@ -1,0 +1,27 @@
+<xml>
+    <text>
+        <div type="stueck">
+            <l n="336">Du darfſt <subst revType="soon-or-late">
+                    <del>auch künftig</del>
+                    <add>alsdann nur</add>
+                </subst> frey erſcheinen</l>
+            <l n="337">Ich habe deines gleichen nie gehaßt</l>
+            <l n="338">Von allen Geiſtern die verneinen</l>
+            <l n="339">Iſt mir der Schalk am wenigſten <subst revType="soon-or-late">
+                    <del>verhaßt</del>
+                    <add>zur Laſt</add>
+                </subst>.</l>
+            <l n="340">Des Menſchen Thätigkeit kann <add revType="soon-or-late">allzu</add> leicht
+                erſchlaffen</l>
+            <l n="341">Er liebt ſo bald die unbedingte Ruh<add revType="soon-or-late">,</add></l>
+            <l n="342">Drum geb ich gern ih<del revType="instant" correction="true">n</del>m den
+                Geſellen zu</l>
+            <l n="343">Der reizt und wirkt und muß als Teufel ſchaffen.</l>
+            <stage n="todo">
+                <add revType="soon-or-late">(zu den Engeln)</add>
+            </stage>
+        </div>
+    </text>
+</xml>
+
+
