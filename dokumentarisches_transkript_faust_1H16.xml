@@ -1,0 +1,101 @@
+<xml>
+    <zone type="main" xml:id="mainzone">
+        <line type="inter" xml:id="la">
+            <ins at="#anchor_150" orient="right">überſende danckbarlichſt</ins>
+        </line>
+        <line left="#anchor_151" type="inter" xml:id="lb">hie<!-- bleibt ungestrichen --></line>
+        <line rend="indent-10" xml:id="lc"><abbr>Ew</abbr> Excellenz <anchor xml:id="anchor_150"/>
+            <mod rend="strikethrough">erhalten</mod>
+            <anchor xml:id="anchor_151"/>
+            <mod rend="strikethrough"><mod rend="strikethrough">da</mod>bey mit</mod></line>
+        <line xml:id="ld"><mod rend="strikethrough">vielem Dank</mod>
+                    d<overw><under>ie</under><over>en</over></overw>
+            <mod rend="strikethrough">mitgetheilten</mod> höchſt gelungenen</line>
+        <line xml:id="le">Aufſatz <mod rend="strikethrough">mit</mod>, den <mod rend="strikethrough"
+                >ich</mod> mit vielem Vergnügen</line>
+        <line type="inter" xml:id="lf">
+            <ins at="#anchor_152" orient="right">en</ins>
+            <ins at="#anchor_153" orient="right">
+                <mod rend="strikethrough">zurück</mod>
+            </ins>
+        </line>
+        <line xml:id="lah">
+            <ins at="#anchor_154" orient="right">Nur</ins>
+        </line>
+        <line xml:id="lg">wiederholt geleſen<anchor xml:id="anchor_152"/>
+            <mod rend="strikethrough">habe</mod><mod rend="strikethrough"/><anchor
+                xml:id="anchor_153"/>.<anchor xml:id="anchor_154"/> Wenig<mod rend="strikethrough"
+                >e</mod> einzelne</line>
+        <line xml:id="lh">Bemerkungen fügt<seg rend="inbetween">e</seg> ich <mod
+                rend="strikethrough">mit</mod>
+            <overw>
+                <under>B</under>
+                <over/>
+            </overw>leyſtift<seg rend="inbetween">l<g ref="#truncation"/></seg> zur</line>
+        <line xml:id="li">Seite. Die Hauptſtelle glaubte ich in</line>
+        <line xml:id="lj">dem Sinne verfaſſen zu müſſen, wie</line>
+        <line type="inter" xml:id="lk">
+
+            <seg left="#anchor_155">fünfzig</seg>
+            <seg left="#anchor_156">denckender</seg>
+        </line>
+        <line xml:id="ll"><damage agent="cut">ſ</damage>ie etwa in<anchor xml:id="anchor_155"/>
+            <mod rend="strikethrough">50</mod> Jahren ein frey <anchor xml:id="anchor_156"/><mod
+                rend="strikethrough">ſinniger</mod></line>
+        <line xml:id="lm">Geſchichtſchreiber aufführen würde<overw>
+                <under>,</under>
+                <over>.</over>
+            </overw>
+            <g ref="#g_break"/><overw>
+                <under>w</under>
+                <over>W</over>
+            </overw>enn</line>
+        <line xml:id="ln"><damage agent="cut">d</damage>er Einzelne durch die Zeit
+            ausgelöſcht</line>
+        <line left="#anchor_157" type="inter" xml:id="lo">geht</line>
+        <line xml:id="lp">wird, ſo <anchor xml:id="anchor_157"/><mod rend="strikethrough"
+                >tritt</mod> das Allgemeine hervor,</line>
+        <line xml:id="lq">die Handlungen verſchwinden und die</line>
+        <line xml:id="lr">Geſinnungen bleiben übrig; man hört</line>
+        <line xml:id="ls">auf nach den Mitteln zu fragen, die</line>
+        <line xml:id="lt">erreichten Zwecke <mod rend="strikethrough"><hi rend="underdots"
+                />treten</mod> vor die Sele</line>
+        <line xml:id="lu">des Betrachters.</line>
+        <line xml:id="lv"><damage agent="cut"><gap quantity="1" reason="illegible" unit="chars"
+                /></damage><!-- Umstellungszeichen, das "billigen" umstellt?? -->
+            <mod rend="strikethrough">Wenn</mod>
+            <abbr>Ew</abbr> Excellenz dieſe Gedanken</line>
+        <line xml:id="lw"><mod rend="strikethrough">billigen</mod>, ſo werden Sie
+            beurtheilen,</line>
+        <line xml:id="lx">ob ich in der Ausführung glücklich gewe-</line>
+        <line left="#anchor_158" type="inter" xml:id="ly">
+
+            <g ref="#g_transp_1"/>
+        </line>
+        <line xml:id="lz">ſen. <overw>
+                <under>d</under>
+                <over>D</over>
+            </overw>as <mod rend="strikethrough">Wenige</mod><c xml:space="preserve"> </c><overw>
+                <under>n</under>
+                <over>N</over>
+            </overw>iedergeſchriebene,<anchor xml:id="anchor_158"/></line>
+        <line xml:id="laa">Wort entſcheidender Wahl überlaſſend<mod rend="strikethrough"
+            >,</mod>.</line>
+        <line type="inter" xml:id="lab"><g ref="#g_transp_1"/>inſofern <seg left="#zu"
+            >an-</seg></line>
+        <line xml:id="lac">wenn der Sinn einigermaßen <anchor xml:id="zu"/><mod rend="strikethrough"
+                >zu</mod></line>
+        <line type="inter" xml:id="lad">
+
+            <seg left="#billigen">nehmlich</seg>
+            <seg>
+                <ins at="#erscheint" orient="right">er</ins>
+            </seg>
+        </line>
+        <line xml:id="lae"><anchor xml:id="billigen"/><mod rend="strikethrough">billigen</mod>
+            <anchor xml:id="erscheint"/>ſcheint.</line>
+        <line rend="indent-20" xml:id="laf">Verehrend, vertrauend, </line>
+        <line rend="indent-40" xml:id="lag">angehörig</line>
+        <anchor xml:id="Schluss"/>
+    </zone>
+</xml>
