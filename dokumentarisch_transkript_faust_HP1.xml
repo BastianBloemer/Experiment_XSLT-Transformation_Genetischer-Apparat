@@ -1,0 +1,30 @@
+<xml>
+    <zone type="main">
+        <line>
+            <mod rend="strikethrough">Lebens</mod>
+            <mod rend="strikethrough">Thaten</mod>
+            <mod rend="strikethrough">Weſen.</mod>
+        </line>
+        <line left="#Person" type="inter">von auſſen geſeh </line>
+        <line xml:id="Lebens-Theil">Lebens Genuß der <anchor xml:id="Person"/> Perſon 1 Theil</line>
+        <line type="inter"/>
+        <line left="#zweyter" type="inter" xml:id="nach-aussen">nach auſſen</line>
+        <line xml:id="Thaten-Theil">Thaten Genuß <anchor xml:id="zweyter"/> zweyter </line>
+        <line type="inter">
+            <ins at="#Epilog" orient="left">von innen.</ins>
+        </line>
+        <line>Schöpfungs Genuß <anchor xml:id="Epilog"/> Epilog im Chaos 
+            <mod rend="strikethrough">w</mod> 
+            auf dem Weg </line>
+        <line rend="indent-70">zur Hölle.</line>
+    </zone>
+    <zone left-right="#Lebens-Theil" top="#Lebens-Theil">
+        <line type="inter">in der Dumpfheit</line>
+        <line rend="indent-10" type="inter"> Leidenſch. </line>
+    </zone>
+    <zone left-right="#nach-aussen" top="#nach-aussen">
+        <line type="inter"> und Genuß mit Bewußtſey.</line>
+        <line left-right="#Thaten-Theil" type="inter">Schönheit.</line>
+    </zone>
+</xml>
+
