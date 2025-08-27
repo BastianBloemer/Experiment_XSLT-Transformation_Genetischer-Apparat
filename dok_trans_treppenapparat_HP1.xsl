@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
   <xsl:output method="html" indent="yes" html-version="5" encoding="UTF-8"/>
   <xsl:template match="/xml">
     <html>
@@ -41,28 +40,22 @@
       </body>
     </html>
   </xsl:template>
-
-  <!-- ===== Zeilen-Ausgabe ===== -->
   <xsl:template match="line">
     <li>
       <ol>
         <li>
-          <!-- Hauptzeile, aber nur bis zum ersten <anchor> -->
           <xsl:apply-templates select="node()[not(self::anchor) and not(preceding-sibling::anchor)]"
           />
         </li>
-        <!-- leere Zeile erzeugen, wenn in der Zeile nur Mod-Elemente sind -->
         <xsl:if test="not(child::*[not(self::mod)])">
           <li/>
         </xsl:if>
-        <!-- Mit dem Anchor gefüllt und ohne Inhalt nach Anchor -->
         <xsl:if test="anchor[not(../mod)]">
           <li>
             <xsl:apply-templates select="node()[not(preceding-sibling::anchor)]"
               mode="replace-anchor-with-id"/>
           </li>
         </xsl:if>
-        <!-- Anchor ersetzten, MIT Inhalt nach Anchor, MIT Zones und MIT Liste bei Sofortkorrektur -->
         <xsl:if test="anchor">
           <li>
             <xsl:choose>
@@ -92,21 +85,14 @@
       <p/>
     </li>
   </xsl:template>
-  
-  <!-- alle zulässigen Referenzkandidaten aus der Hauptzone -->
   <xsl:variable name="refs" select="//line[@type = 'inter'] | //ins"/>
-  <!-- alle zulässigen Referenzkandidaten aus der Nebenzonen -->
   <xsl:variable name="zone-refs" select="//zone[not(@type = 'main')]"/>
-  
-  <!-- Template für die zweite Zeile: Erste Einfügung der Anchor -->
   <xsl:template match="anchor" mode="replace-anchor-with-id">
     <xsl:variable name="hash" select="concat('#', @xml:id)"/>
     <xsl:for-each select="$refs[@* = $hash]">
       <xsl:apply-templates select="node()"/>
     </xsl:for-each>
   </xsl:template>
-  
-  <!-- Template für die dritte Zeile: Anchor + Extra-Zones -->
   <xsl:template match="anchor" mode="replace-anchor-with-id-zones">
     <xsl:variable name="hash" select="concat('#', @xml:id)"/>
     <xsl:for-each select="$refs[@* = $hash]">
@@ -117,5 +103,4 @@
       </xsl:if>
     </xsl:for-each>
   </xsl:template>
-
 </xsl:stylesheet>

@@ -3,53 +3,55 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="xs math"
     version="3.0">
-    <!-- Root template: create an HTML page -->
     <xsl:template match="/">
         <html>
             <head>
                 <title>Faust – Prosaentwurf (HTML)</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
                 <style>
-                    .add-1-soon {position: relative; top: 1em;}           
-                    .add-2-soon {position: relative; top: 2em;}                   
-                    span {font-weight: bold;}      
-                    .del-soon, .del-instant {font-weight: normal;}
-                </style>
+                    .add-1-soon {
+                        position: relative;
+                        top: 1em;
+                    }
+                    .add-2-soon {
+                        position: relative;
+                        top: 2em;
+                    }
+                    span {
+                        font-weight: bold;
+                    }
+                    .del-soon,
+                    .del-instant {
+                        font-weight: normal;
+                    }</style>
             </head>
             <body>
                 <h1>Faust - Synoptischer Apparat</h1>
-                <ol><xsl:apply-templates select="xml/text/p"/></ol>
+                <ol>
+                    <xsl:apply-templates select="xml/text/p"/>
+                </ol>
             </body>
         </html>
     </xsl:template>
-    <!-- Soforttilgungen markieren und in eckige Klammern  -->
     <xsl:template match="del[@revType = ('instant')]">
         <span class="del-instant"> [<xsl:apply-templates/>]</span>
     </xsl:template>
-    <!-- Spätkorrekturen markieren und in eckige Klammern -->
     <xsl:template match="del[@revType = 'soon']">
         <span class="del-soon">[<xsl:apply-templates/>]</span>
     </xsl:template>
-    <!-- Sofortkorrekturen -->
     <xsl:template match="add[.//del[@revType = 'instant']]">
         <span class="add-del-instant">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
-    
-    <!-- Hinzufügung, differenziert nach Positionen -->
     <xsl:template match="add[not(.//del[@revType = 'instant'])]">
         <xsl:variable name="p" select="ancestor::p[1]"/>
-        <!-- Zähle nur add in diesem p, die ebenfalls KEIN del[@revType='instant'] enthalten -->
         <xsl:variable name="index"
             select="count($p//add[not(.//del[@revType = 'instant'])][. &lt;&lt; current()]) + 1"/>
         <span class="add-{$index}-soon">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
-    
-    
-    <!-- Einheitliches Template für alle Absätze. Erzeugen von Listen pro Zeile (p) -->
     <xsl:template match="p">
         <li>
             <span class="line">

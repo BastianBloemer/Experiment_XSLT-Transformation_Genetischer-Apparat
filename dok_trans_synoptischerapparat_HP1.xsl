@@ -3,7 +3,6 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="xs math"
     version="3.0">
-    <!-- Root template: create an HTML page -->
     <xsl:template match="/">
         <html>
             <head>
@@ -35,8 +34,6 @@
             </body>
         </html>
     </xsl:template>
-
-    <!-- Einheitliches Template für alle Absätze. -->
     <xsl:template match="line">
         <li>
             <span class="line">
@@ -46,17 +43,13 @@
                         select="following-sibling::*[1][self::line and @rend = 'indent-70']"/>
                 </xsl:if>
             </span>
+            <br/>
+            <br/>
         </li>
-        <br/>
-        <br/>
     </xsl:template>
-
-    <!-- Tilgungen in eckige Klammern  -->
     <xsl:template match="mod">
         <span class="del"> [<xsl:apply-templates/>]</span>
     </xsl:template>
-
-    <!-- Hinzufügung, differenziert nach Positionen -->
     <xsl:template match="anchor">
         <xsl:variable name="anchor-id" select="concat('#', @xml:id)"/>
         <xsl:variable name="line-refs" select="//line[@type = 'inter'] | //ins"/>
@@ -73,5 +66,4 @@
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
-
 </xsl:stylesheet>

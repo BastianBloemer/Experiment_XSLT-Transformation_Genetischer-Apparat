@@ -13,9 +13,8 @@
         <line type="inter">
             <ins at="#Epilog" orient="left">von innen.</ins>
         </line>
-        <line>Schöpfungs Genuß <anchor xml:id="Epilog"/> Epilog im Chaos 
-            <mod rend="strikethrough">w</mod> 
-            auf dem Weg </line>
+        <line>Schöpfungs Genuß <anchor xml:id="Epilog"/> Epilog im Chaos <mod rend="strikethrough"
+                >w</mod> auf dem Weg </line>
         <line rend="indent-70">zur Hölle.</line>
     </zone>
     <zone left-right="#Lebens-Theil" top="#Lebens-Theil">
@@ -27,4 +26,3 @@
         <line left-right="#Thaten-Theil" type="inter">Schönheit.</line>
     </zone>
 </xml>
-
