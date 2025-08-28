@@ -8,6 +8,8 @@
             <head>
                 <title>Faust – Prosaentwurf (HTML)</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+                <!-- CSS-Anweisungen für Tiefstellungen usw. -->
                 <style>
                     .add-1 {
                         position: relative;
@@ -24,6 +26,8 @@
                         font-weight: normal;
                     }</style>
             </head>
+
+            <!-- Erzeugen einer grundlegenden Liste mit einem Eintrag pro Zeile. Dabei aber nur Zeilen der Hauptzone und die keine Zwischenzeilen sind -->
             <body>
                 <h1>Faust - Synoptischer Apparat</h1>
                 <ol>
@@ -34,22 +38,27 @@
             </body>
         </html>
     </xsl:template>
+
+    <!-- Erzeugung des Textinhaltes pro oben ausgewählter Zeile und  hinzufügung des Textinhalts der nachfolgenden Zeile, wenn dieser stark eingerückt ist -->
     <xsl:template match="line">
         <li>
             <span class="line">
                 <xsl:apply-templates/>
-                <xsl:if test="following-sibling::*[1][self::line and @rend = 'indent-70']">
-                    <xsl:value-of
-                        select="following-sibling::*[1][self::line and @rend = 'indent-70']"/>
-                </xsl:if>
+                <xsl:value-of select="
+                        following-sibling::*[1]
+                        [self::line and @rend = 'indent-70']"/>
             </span>
             <br/>
             <br/>
         </li>
     </xsl:template>
+
+    <!-- Klassifizierung der Streichungen -->
     <xsl:template match="mod">
         <span class="del"> [<xsl:apply-templates/>]</span>
     </xsl:template>
+
+    <!-- Einfügung und Klassifizierung der durch Ankerelemente und Identitäten zuordnenbaren Texte innerhalb von Zwischenzeilen und anderen Zonen  -->
     <xsl:template match="anchor">
         <xsl:variable name="anchor-id" select="concat('#', @xml:id)"/>
         <xsl:variable name="line-refs" select="//line[@type = 'inter'] | //ins"/>

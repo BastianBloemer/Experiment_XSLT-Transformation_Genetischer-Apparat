@@ -8,6 +8,8 @@
       <head>
         <title>Faust – Prosaentwurf (HTML)</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <!-- CSS-Anweisungen für das Verhalten der Sublist (in HP1 Sofortkorrektur)-->
         <style>
           .inline-sublist {
               display: inline-flex;
@@ -35,6 +37,8 @@
       </head>
       <body>
         <h1>Faust - Stufenapparat</h1>
+
+        <!-- Erzeugen der ersten geordneten Liste. Inhalt wird weitere durch Templates erzeugt -->
         <ol start="1">
           <xsl:apply-templates select="xml/text/p"/>
         </ol>
@@ -42,8 +46,7 @@
     </html>
   </xsl:template>
 
-
-
+  <!-- Grundlegendes Template für alle Paragraphen. Es wird eine erste Listenzeiel mit dem Textinhalt bis zur ersten Hinzufügung erzeugt -->
   <xsl:template match="p">
     <li>
       <ol>
@@ -51,12 +54,12 @@
           <xsl:apply-templates select="node()[not(self::add) and not(preceding-sibling::add)]"/>
         </li>
 
-
+        <!-- Schleife für Streichung. Wenn eine Streichung im Paragraph wird eine leere Listenzeile erzeugt -->
         <xsl:for-each select="del[@revType = 'soon']">
           <li/>
         </xsl:for-each>
 
-
+        <!-- Schleife für Hinzufügungen, die keine Sofortkorrekturen sind.  -->
         <xsl:for-each select="add[not(.//del[@revType = 'instant'])]">
           <li>
             <xsl:variable name="upto-current"
@@ -66,9 +69,12 @@
               test="position() = last() and not(following-sibling::add[1]//del[@revType = 'instant'])">
               <xsl:apply-templates select="following-sibling::node()"/>
             </xsl:if>
+            
+            <!--  Schleife für Sofortkorrekturen, wenn diese auf die erste Hinzufügung folgen  -->
             <xsl:if test="following-sibling::add[1][.//del[@revType = 'instant']]">
               <xsl:apply-templates
-                select="following-sibling::node()[. &lt;&lt; following-sibling::add[.//del[@revType = 'instant']][1]]"/>
+                select="following-sibling::node()
+                [. &lt;&lt; following-sibling::add[.//del[@revType = 'instant']][1]]"/>
               <ol class="inline-sublist">
                 <li>
                   <xsl:apply-templates
@@ -79,6 +85,7 @@
                 </li>
               </ol>
             </xsl:if>
+            
           </li>
         </xsl:for-each>
       </ol>

@@ -6,6 +6,7 @@
       <head>
         <title>Faust – Prosaentwurf (HTML)</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!-- CSS-Anweisnungen für die Extraliste -->
         <style>
           .inline-sublist {
               display: inline-flex;
@@ -40,6 +41,8 @@
       </body>
     </html>
   </xsl:template>
+
+  <!-- Erzeugen der Grundliste -->
   <xsl:template match="line">
     <li>
       <ol>
@@ -47,18 +50,26 @@
           <xsl:apply-templates select="node()[not(self::anchor) and not(preceding-sibling::anchor)]"
           />
         </li>
+
+        <!-- Erzeugen der leeren Zeile bei Streichung -->
         <xsl:if test="not(child::*[not(self::mod)])">
           <li/>
         </xsl:if>
+
+        <!-- Erzeugen einer Zeile bis nach dem Anchor, wenn Anchor ohne Modifikation als Kindelement -->
         <xsl:if test="anchor[not(../mod)]">
           <li>
             <xsl:apply-templates select="node()[not(preceding-sibling::anchor)]"
               mode="replace-anchor-with-id"/>
           </li>
         </xsl:if>
+
+        <!-- Erzeugen einer Zeile bei Anchor -->
         <xsl:if test="anchor">
           <li>
             <xsl:choose>
+
+              <!-- Erstellung der Extraliste für die Sofortkorrektur -->
               <xsl:when test="mod">
                 <xsl:variable name="lastMod" select="mod"/>
                 <xsl:apply-templates select="node()[. &lt;&lt; $lastMod]"
@@ -75,6 +86,8 @@
                   </li>
                 </ol>
               </xsl:when>
+
+              <!-- Vorgehen, wenn keine Sofortkorrektur -->
               <xsl:otherwise>
                 <xsl:apply-templates select="node()" mode="replace-anchor-with-id-zones"/>
               </xsl:otherwise>
@@ -85,15 +98,20 @@
       <p/>
     </li>
   </xsl:template>
-  <xsl:variable name="refs" select="//line[@type = 'inter'] | //ins"/>
-  <xsl:variable name="zone-refs" select="//zone[not(@type = 'main')]"/>
+
+  <!-- Template für die zweite Zeile bei Anchor -->
   <xsl:template match="anchor" mode="replace-anchor-with-id">
     <xsl:variable name="hash" select="concat('#', @xml:id)"/>
+    <xsl:variable name="refs" select="//line[@type = 'inter'] | //ins"/>
     <xsl:for-each select="$refs[@* = $hash]">
       <xsl:apply-templates select="node()"/>
     </xsl:for-each>
   </xsl:template>
+  
+  <!-- Template für die dritte Zeile bei Anchor -->
   <xsl:template match="anchor" mode="replace-anchor-with-id-zones">
+    <xsl:variable name="zone-refs" select="//zone[not(@type = 'main')]"/>
+    <xsl:variable name="refs" select="//line[@type = 'inter'] | //ins"/>
     <xsl:variable name="hash" select="concat('#', @xml:id)"/>
     <xsl:for-each select="$refs[@* = $hash]">
       <xsl:apply-templates select="node()"/>
@@ -103,4 +121,5 @@
       </xsl:if>
     </xsl:for-each>
   </xsl:template>
+
 </xsl:stylesheet>

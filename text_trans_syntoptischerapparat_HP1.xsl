@@ -8,6 +8,8 @@
             <head>
                 <title>Faust – Prosaentwurf (HTML)</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                
+                <!-- CSS-Anweisungen für Tieferstellungen von Hinzufügungen usw. -->
                 <style>
                     .add-1-soon {
                         position: relative;
@@ -25,6 +27,7 @@
                         font-weight: normal;
                     }</style>
             </head>
+            <!-- Erzeugung der Grundlegenden Liste -->
             <body>
                 <h1>Faust - Synoptischer Apparat</h1>
                 <ol>
@@ -33,25 +36,8 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:template match="del[@revType = ('instant')]">
-        <span class="del-instant"> [<xsl:apply-templates/>]</span>
-    </xsl:template>
-    <xsl:template match="del[@revType = 'soon']">
-        <span class="del-soon">[<xsl:apply-templates/>]</span>
-    </xsl:template>
-    <xsl:template match="add[.//del[@revType = 'instant']]">
-        <span class="add-del-instant">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
-    <xsl:template match="add[not(.//del[@revType = 'instant'])]">
-        <xsl:variable name="p" select="ancestor::p[1]"/>
-        <xsl:variable name="index"
-            select="count($p//add[not(.//del[@revType = 'instant'])][. &lt;&lt; current()]) + 1"/>
-        <span class="add-{$index}-soon">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
+    
+    <!-- Erzeugung eines Listeneintrags pro Paragraph -->x
     <xsl:template match="p">
         <li>
             <span class="line">
@@ -61,4 +47,34 @@
         <br/>
         <br/>
     </xsl:template>
+    
+    <!-- Klassifierzung der Sofortkorrektur und setzten eckiger Klammer-->
+    <xsl:template match="del[@revType = ('instant')]">
+        <span class="del-instant"> [<xsl:apply-templates/>]</span>
+    </xsl:template>
+    
+    <!-- Klassifizierung der Streichung und setzten eckiger Klammer -->
+    <xsl:template match="del[@revType = 'soon']">
+        <span class="del-soon">[<xsl:apply-templates/>]</span>
+    </xsl:template>
+    
+    <!-- Klassifizierung der Hinzufügung der Sofortkorrektur -->
+    <xsl:template match="add[.//del[@revType = 'instant']]">
+        <span class="add-del-instant">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    <!-- Klassifizierung der einfachen Hinzufügungen nach Reihenfolge innerhalb eines Paragraphen -->
+    <xsl:template match="add[not(.//del[@revType = 'instant'])]">
+        <xsl:variable name="p" select="ancestor::p[1]"/>
+        <xsl:variable name="index"
+            select="count($p//add[not(.//del[@revType = 'instant'])]
+            [. &lt;&lt; current()]) + 1"/>
+        <span class="add-{$index}-soon">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    
 </xsl:stylesheet>
